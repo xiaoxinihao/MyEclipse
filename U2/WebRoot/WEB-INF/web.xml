@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+  <display-name>U2</display-name>	
+  
+  <welcome-file-list>
+    <welcome-file>home.jsp</welcome-file>
+  </welcome-file-list>
+    <session-config>
+        <session-timeout>30</session-timeout>
+    </session-config>
+    
+   <!-- 设置用户不为空的过滤器 -->
+   <filter>
+	 <filter-name>filterName</filter-name>
+	 <filter-class>cn.xiaoxi.filter.CharsetFilter</filter-class>
+   </filter> 
+    
+   <filter-mapping>
+     <filter-name>filterName</filter-name>
+     <url-pattern>/person/*</url-pattern>
+   </filter-mapping> 
+   
+   <!-- 设置编码格式的过滤器 -->
+   <filter>
+   	<filter-name>encodingFilter</filter-name>
+   	<filter-class>cn.xiaoxi.filter.EncodingFilter</filter-class>
+   </filter>
+   
+   <filter-mapping>
+   	<filter-name>encodingFilter</filter-name>
+   	<url-pattern>/*</url-pattern>
+   </filter-mapping>
+   
+   
+   <!--配置全文参数更改编码格式  -->
+   <context-param>
+   	<param-name>encoding</param-name>
+   	<param-value>UTF-8</param-value>
+   </context-param>
+</web-app>
